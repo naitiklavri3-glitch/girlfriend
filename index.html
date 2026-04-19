@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden;
+            background: linear-gradient(135deg, #ffd6e7 0%, #ffb3c6 50%, #ffc8dd 100%);
+            font-family: "Lato", sans-serif;
+        }
+        .container { text-align: center; padding: 0 24px; }
+        .header_text {
+            font-family: "Playfair Display", serif;
+            font-size: 44px; font-weight: 700; color: white;
+            text-shadow: 0 2px 16px rgba(180,60,90,0.25);
+            margin-bottom: 6px; line-height: 1.2;
+        }
+        .sub { font-size: 13px; color: rgba(255,255,255,0.75); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+        .gif_container { display: flex; justify-content: center; margin-bottom: 32px; }
+        .gif_container img { width: 180px; border-radius: 18px; box-shadow: 0 8px 24px rgba(180,60,90,0.2); }
+        .buttons { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 64px; }
+        .btn {
+            font-family: "Lato", sans-serif; font-size: 16px; font-weight: 700;
+            letter-spacing: 1px; padding: 14px 40px; border: none;
+            border-radius: 50px; cursor: pointer; transition: all 0.3s ease;
+        }
+        #yesButton { background: white; color: #d95f85; box-shadow: 0 6px 20px rgba(255,255,255,0.4); }
+        #yesButton:hover { transform: scale(1.05); }
+        #noButton { background: rgba(255,255,255,0.3); color: white; position: fixed; transition: left 0.3s ease, top 0.3s ease; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">still mad at me?</h1>
+        <p class="sub">be honest now</p>
+        <div class="gif_container">
+            <img src="https://media.giphy.com/media/LnKonfpQ44fNvuGLkA/giphy.gif" alt="cute">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="window.location.href='feelings.html'">a little... 🥺</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()">very much...</button>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            var btn = document.getElementById("noButton");
+            var yes = document.getElementById("yesButton");
+            var rect = yes.getBoundingClientRect();
+            btn.style.left = (rect.right + 64) + "px";
+            btn.style.top = rect.top + "px";
+        }
+        function moveButton() {
+            var btn = document.getElementById("noButton");
+            var bw = btn.offsetWidth, bh = btn.offsetHeight;
+            var x = Math.random() * (window.innerWidth - bw - 20) + 10;
+            var y = Math.random() * (window.innerHeight - bh - 20) + 10;
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
